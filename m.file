@@ -1,0 +1,14 @@
+% Read the image
+image = imread('your_image.jpg');
+
+% Detect red pixels
+red_mask = image(:,:,1) > 200 & image(:,:,2) < 100 & image(:,:,3) < 100;
+
+% Apply the mask to the original image
+red_only = zeros(size(image));
+red_only(:,:,1) = image(:,:,1) .* uint8(red_mask);
+red_only(:,:,2) = image(:,:,2) .* uint8(red_mask);
+red_only(:,:,3) = image(:,:,3) .* uint8(red_mask);
+
+% Display the image
+imshow(red_only);
